@@ -80,6 +80,7 @@ class Cube(object):
             m = range(24)
         for i in range(24):
             self.now[i] = color[m[i]]
+        self.record.append(move)
         return self.now
 
     def equals(self, another):
