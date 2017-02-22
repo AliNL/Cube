@@ -27,7 +27,7 @@ class Cube(object):
     def __init__(self, color):
         self.start = [c for c in color]
         self.record = []
-        self.now = self.start
+        self.now = self.start[:]
 
     def get(self):
         return ''.join(self.now)
@@ -78,27 +78,31 @@ class Cube(object):
                  20, 21, 22, 23]
         else:
             m = range(24)
+        new = []
         for i in range(24):
-            self.now[i] = color[m[i]]
-        self.record.append(move)
-        return self.now
+            new.append(self.now[m[i]])
+        return new
 
     def equals(self, another):
         if cmp(self.get(), another.get()) == 0:
             return True
         return False
 
-        # def turn(self, move):
-        #     color = self.now
-        #     if move == RIGHT_UP:
-        #         self.now = color[20:23] + color[16:19] + color[8:15] + color[:7]
-        #     elif move == RIGHT_DOWN:
-        #         self.now = color[16:23] + color[8:15] + color[4:7] + color[:3]
-        #     elif move == LEFT_UP:
-        #         self.now = color[:7] + color[20:23] + color[16:19] + color[8:15]
-        #     elif move == LEFT_DOWN:
-        #         self.now = color[:7] + color[16:23] + color[12:15] + color[8:11]
-        #     elif move == UP_RIGHT:
-        #         self.now = color[8:15] + color[4:7] + color[:4] + color[16:23]
-        #     elif move == UP_LEFT:
-        #         self.now = color[12:15] + color[8:11] + color[:7] + color[16:23]
+    def how_to_get(self, another):
+        if self.get() == another:
+            return
+
+            # def turn(self, move):
+            #     color = self.now
+            #     if move == RIGHT_UP:
+            #         self.now = color[20:23] + color[16:19] + color[8:15] + color[:7]
+            #     elif move == RIGHT_DOWN:
+            #         self.now = color[16:23] + color[8:15] + color[4:7] + color[:3]
+            #     elif move == LEFT_UP:
+            #         self.now = color[:7] + color[20:23] + color[16:19] + color[8:15]
+            #     elif move == LEFT_DOWN:
+            #         self.now = color[:7] + color[16:23] + color[12:15] + color[8:11]
+            #     elif move == UP_RIGHT:
+            #         self.now = color[8:15] + color[4:7] + color[:4] + color[16:23]
+            #     elif move == UP_LEFT:
+            #         self.now = color[12:15] + color[8:11] + color[:7] + color[16:23]
